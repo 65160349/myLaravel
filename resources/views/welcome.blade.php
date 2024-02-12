@@ -1,27 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <title>Javascript 101</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Noto+Sans+Thai&display=swap" rel="stylesheet">
+    <title></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            font-family: 'Itim', cursive;
+            font-family: 'Noto Sans Thai', sans-serif;
+            background-color: #ffffff;
+            background-image: url('https://wallpapercave.com/wp/wp2428456.jpg');
+            background-position: center top;
+            background-size: cover;
+            background-repeat: repeat;
+
+        }
+
+        h1 {
+            font-size: 50px;
+            text-shadow: 2px 2px 2px rgba(61, 56, 61, 1);
+            color: #ffffff;
+            font-family: 'Itim', cursive;
+            font-family: 'Noto Sans Thai', sans-serif;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+            font-family: 'Itim', cursive;
+            font-family: 'Noto Sans Thai', sans-serif;
+            border-radius: 8px;
+        }
+
+        input {
+            padding: 5px;
+            font-size: 16px;
+            font-family: 'Itim', cursive;
+            font-family: 'Noto Sans Thai', sans-serif;
+            border-radius: 8px;
+        }
+
+        table {
+            border-radius: 8px;
+            width: 40%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-family: 'Itim', cursive;
+            font-family: 'Noto Sans Thai', sans-serif;
+            backdrop-filter: blur(10px);
+            background-color: #ffffff66
+
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ffffff66;
+        }
+
+        th {
+            background-color: #ffffff66;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ffffff66;
+        }
+
+
+    </style>
 </head>
 
 <body>
-    <h1>Before</h1>
-    <h1 id="myh1">
-        <h1>Prepend</h1>Javascript<h1>Append</h1>
-    </h1>
-    <h1>After</h1>
-    <button onclick="alert('Hello World!')">Click Me!</button>
-    <input type="text" id="my_number">
-    <button onclick="myFunction()">submit number</button>
-    <br>
-    <button onclick="myFunction"></button>
+    <h1>ตารางแม่สูตรคูณ</h1>
+    <h1 id="myh1"></h1>
+    <input type="text" id="my_number" placeholder="ป้อนตัวเลข">
+    <button onclick="generateMultiplicationTable()">Submit</button>
     <br>
     <table id="my_table">
         <thead>
             <tr>
-                <td>#</td>
-                <td>result</td>
+                <th>#</th>
+                <th>Result</th>
             </tr>
         </thead>
         <tbody id="my_tbody">
@@ -30,72 +95,24 @@
     </table>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function()) {
-            console.log("Hello Wolrd - document.ready")
+        $(document).ready(function() {
+            console.log("Hello World - document.ready")
             console.log($('#myh1').text())
             console.log($('#my_number').val())
-            $('#myh1').text("Javascript 101")
-            $('#my_number').val(100)
-            setInterval(() => {
-                $('#myh1').after(`<h1 class="my_gen_number">setInterval</h1>`)
-            }, 2000);
 
-        };
-
-        function myFunction2(){
-            console.log($('#my_table').chlidren)
-        }
-
-        function myFunction() {
-            let my_number = parseInt($('#my_number').val())
-            for (let i = 0; i < my_number; i++) {
-                $('#myh1').after(`<h1 class="my_gen_number">${i}</h1>`)
-            }
-            console.log(document.getElementById('my_number').value);
-            console.log('Click submit number')
-
-            setTimeout((function) {
-                $('.my_gen_number').each(funtion(index, val) {
-                    $(val).remove();
-                    //val.remove()
-                })
-            }, 2000);
-
-        }
-        console.log("Hello World!");
-        let myval;
-        myval = '10';
-        myval2 = '2';
-        console.log(myval, myval2)
-        myval3 = parseInt(myval) + myval2;
-        console.log(myval3)
-        myval3 = myval - myval2;
-        console.log(myval3)
-        myval3 = myval * myval2;
-        console.log(myval3)
-        myval3 = myval / myval2;
-        console.log(myval3)
-    </script>
-    <script>
-        let myval4 = [1, 2, 3, 4];
-        myval4[5] = 5;
-        myval4[6] = [6, 5, 4, 5];
-        console.log(myval4)
-
-        for (let i = 0; i < myval4.length; i++) {
-            console.log("in for", myval4[i])
-        }
-        myval4.forEach(function(value, index) {
-            console.log("in foreach", value, index)
         });
 
-        console.log(document.getElementById('myh1').innerHTML)
-        /*
-        // php
-        foreach($myval4 as $index => $value){
+        function generateMultiplicationTable() {
+            let factor = parseInt($('#my_number').val());
+            let my_code_tr = ``;
 
+            for (let i = 1; i <= 12; i++) {
+                let result = factor * i;
+                my_code_tr += `<tr><td>${i}</td><td>${factor} * ${i} = ${result}</td></tr>`;
+            }
+
+            $('#my_tbody').html(my_code_tr);
         }
-        */
     </script>
 </body>
 
